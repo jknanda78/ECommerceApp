@@ -5,7 +5,7 @@ var webpack = require("webpack"),
 module.exports = {
   devtool: "cheap-module-source-map",
   entry: {
-    app: "./example/index.js"
+    app: ["babel-polyfill", "./example/index.js"]
   },
   output: {
     path: __dirname,
@@ -23,7 +23,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         query: {
-          presets: ["react", "es2015", "stage-2"]
+          presets: ["react", "es2015", "stage-2", "stage-0"]
         }
       },
       {
