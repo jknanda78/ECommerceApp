@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Signup from '../components/signup';
-import {submitSignupForm} from "../actions";
+import {submitSignupForm, submitSignupFormAsync, signupOnEnter} from "../actions";
 import {sucessfulSignup} from "../../Login/actions"
 
 /**
@@ -10,7 +10,7 @@ import {sucessfulSignup} from "../../Login/actions"
 const mapDispatchToProps = dispatch => ({
   signupOnSubmit: e => {
     e.preventDefault();
-    dispatch(submitSignupForm(e));
+    submitSignupForm(dispatch);
   }
 });
 
@@ -21,7 +21,9 @@ const mapDispatchToProps = dispatch => ({
  */
 const mapStateToProps = (state, props) => ({
   ...props,
-  className: state.className
+  className: state.signupReducer.className,
+  browserName: state.browserInfoReducer.name,
+  browserVersion: state.browserInfoReducer.version
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

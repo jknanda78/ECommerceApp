@@ -5,6 +5,7 @@ import React, { PropTypes } from "react";
  * @returns {JSX}
  */
  function Signup({className, signupOnSubmit, children}) {
+
   return (
      <div className={className}>
       <header>
@@ -13,15 +14,13 @@ import React, { PropTypes } from "react";
       <form onSubmit={signupOnSubmit}>
         <button name="submit" type="submit">Create Account</button>
       </form>
-      {children}
      </div>
    );
  }
 
  Signup.propTypes = {
    className: PropTypes.string,
-   signupOnSubmit: PropTypes.func,
-   children: PropTypes.object
+   signupOnSubmit: PropTypes.func
  };
 
  export default Signup;

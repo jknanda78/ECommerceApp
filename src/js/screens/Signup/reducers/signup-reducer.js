@@ -10,14 +10,21 @@ const signupState = {
  * @return {Object}
  */
 export default function(state = signupState, action) {
+  console.log("action.type", action.type);
   switch (action.type) {
     case "SIGNUP_FORM_SUBMIT":
       //do something
-      state = Object.assign({}, state, {test: "nanda"});
+      console.log("SIGNUP_FORM_SUBMIT", arguments);
+      // state = Object.assign({}, state, {userName: "jyoti nanda"});
       return {
         ...state
       };
-
+    case "SUCCESSFUL_SIGNUP":
+      //do something
+      state = Object.assign({}, state, {userName: action.response.user});
+      return {
+        ...state
+      };
     default:
       return state;
   }

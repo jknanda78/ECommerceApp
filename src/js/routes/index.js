@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import Signup from "../screens/Signup/containers";
 
-const Root = ({ store }) => (
+const Root = ({ store, signupOnEnter }) => (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/(:filter)" component={Signup} />
@@ -12,7 +12,7 @@ const Root = ({ store }) => (
 );
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default Root;
