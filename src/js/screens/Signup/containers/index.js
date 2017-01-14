@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Signup from '../components/signup';
-import {submitSignupForm, submitSignupFormAsync, signupOnEnter} from "../actions";
+import {submitSignupForm} from "../actions";
 import {sucessfulSignup} from "../../Login/actions"
 
 /**
@@ -10,7 +10,9 @@ import {sucessfulSignup} from "../../Login/actions"
 const mapDispatchToProps = dispatch => ({
   signupOnSubmit: e => {
     e.preventDefault();
-    submitSignupForm(dispatch);
+    console.log("trigger submitSignupForm");
+    // dispatch(submitSignupForm(dispatch));
+    dispatch(submitSignupForm());
   }
 });
 

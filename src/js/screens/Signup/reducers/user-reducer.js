@@ -13,9 +13,9 @@ export const userState = {
 export default function(state = userState, action) {
   switch (action.type) {
     case "SUCCESSFUL_SIGNUP":
-    console.log("SUCCESSFUL_SIGNUP");
-      //do something
-      state = Object.assign({}, state, {loggedin: true, name: state.userName});
+    console.log("SUCCESSFUL_SIGNUP", action);
+      //do something{userName: action.response.user}
+      state = Object.assign({}, state, {loggedin: true, name: action.response.user});
       return {
         ...state
       };

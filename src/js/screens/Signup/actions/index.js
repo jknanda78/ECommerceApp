@@ -12,22 +12,28 @@
  */
  import {SIGNUP_FORM_SUBMIT, SUCCESSFUL_SIGNUP, SIGNUP_FAILED} from "./types";
 
- // export const submitSignupForm = (payload) => ({
- //   type: SIGNUP_ATTEMPT,
- //   payload: {user: "jyoti"}
+ // export const submitSignupForm = (dispatch) => ({
+ //   type: "SIGNUP_ATTEMPT",
+ //   payload: {user: "jyoti"},
+ //   dispatch
  // });
 
- export const submitSignupForm = (dispatch) => {
-   return fetch("http://www.mocky.io/v2/58618420100000640df3950c")
-    .then(response => {
-       return response.json();
-     })
-    .then(response => {
-       console.log("@@@@@ response @@@@@", response);
-       return dispatch({
-         type: SUCCESSFUL_SIGNUP,
-         response
-       });
-     })
-    .catch(error => { console.log('request failed', error); });
- }
+ export const submitSignupForm = () => ({
+   type: "SIGNUP_ATTEMPT",
+   payload: {user: "jyoti"}
+ });
+
+ // export const submitSignupForm = (dispatch) => {
+ //   return fetch("http://www.mocky.io/v2/58618420100000640df3950c")
+ //    .then(response => {
+ //       return response.json();
+ //     })
+ //    .then(response => {
+ //       console.log("@@@@@ response @@@@@", response);
+ //       return dispatch({
+ //         type: SUCCESSFUL_SIGNUP,
+ //         response
+ //       });
+ //     })
+ //    .catch(error => { console.log('request failed', error); });
+ // }

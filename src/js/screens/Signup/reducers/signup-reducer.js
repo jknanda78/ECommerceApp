@@ -14,14 +14,7 @@ export default function(state = signupState, action) {
   switch (action.type) {
     case "SIGNUP_FORM_SUBMIT":
       //do something
-      console.log("SIGNUP_FORM_SUBMIT", arguments);
       // state = Object.assign({}, state, {userName: "jyoti nanda"});
-      return {
-        ...state
-      };
-    case "SUCCESSFUL_SIGNUP":
-      //do something
-      state = Object.assign({}, state, {userName: action.response.user});
       return {
         ...state
       };

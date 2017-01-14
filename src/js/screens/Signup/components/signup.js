@@ -1,4 +1,5 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
+import { Field, reduxForm } from 'redux-form';
 
 /**
  * @param {Object} props
@@ -12,6 +13,7 @@ import React, { PropTypes } from "react";
         <h1>Create Account</h1>
       </header>
       <form onSubmit={signupOnSubmit}>
+        <Field name="firstName" component="input" type="text"/>
         <button name="submit" type="submit">Create Account</button>
       </form>
      </div>
@@ -23,4 +25,6 @@ import React, { PropTypes } from "react";
    signupOnSubmit: PropTypes.func
  };
 
- export default Signup;
+export default reduxForm({
+   form: 'signup'
+ })(Signup);

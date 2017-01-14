@@ -14,6 +14,7 @@ import rootSaga from "../src/js/screens/Signup/sagas";
 const sagaMiddleware = createSagaMiddleware();
 const STORE = createStore(reducer, applyMiddleware(reduxLogger(), sagaMiddleware));
 sagaMiddleware.run(rootSaga);
+// sagaMiddleware.run(rootSaga, STORE.dispatch);
 
 render(
   <Root store={STORE} />,
