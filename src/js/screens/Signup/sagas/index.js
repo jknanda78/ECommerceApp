@@ -25,29 +25,7 @@ function callAPI(config) {
   .catch(error => ({error}));
 }
 
-function* signupSaveUser(/*action*/) {
-  // console.log("signupSaveUser:", action.payload);
-
-  /* Approach 1 */
-  // const saveUser = yield call(callAPI, {body: action.payload, method: "GET"});
-  // saveUser.then(response => {
-  //   action.dispatch({
-  //     type: "SUCCESSFUL_SIGNUP",
-  //     response: response.response
-  //   });
-  // });
-
-  /* Approach 2 */
-  // const saveUser = yield call(fetch, "http://www.mocky.io/v2/58618420100000640df3950c", {body: action.payload, method: "GET"});
-  // const response = yield saveUser.json();
-  //
-  // if(response) {
-  //     yield put({type: "SUCCESSFUL_SIGNUP", response});
-  // } else {
-  //   yield put({type: "SIGNUP_FAILED", message: "api failed"});
-  // }
-
-  /* Approach 3 */
+function* signupSaveUser() {
   while (true) {
     const {payload} = yield take("SIGNUP_ATTEMPT");
     try {
@@ -60,14 +38,9 @@ function* signupSaveUser(/*action*/) {
 
 }
 
-export function* watchSubmitSignupForm() {console.log("watchSubmitSignupForm:", arguments);
-  yield takeLatest('SIGNUP_ATTEMPT', signupSaveUser);
-}
-
-export default function* rootSaga() {console.log("rootSaga:", arguments);
+export default function* rootSaga() {
   yield [
     updateBrowserInfo(),
     signupSaveUser()
-    // watchSubmitSignupForm()
   ]
 }
