@@ -6,17 +6,32 @@ export function* updateBrowserInfo() {
   yield put({ type: 'APPLICATION_ONLOAD' });
 }
 
-function callAPI(config) {
-  return fetch("http://www.mocky.io/v2/5870a6f8120000d001ad16eb",
+const Headers = {
+  'Accept'        : 'application/json',
+  'Content-Type'  : 'application/json'
+};
+
+function callAPI(url, method = 'GET', headers = Headers, payload = {}) {
+  const Body = JSON.stringify(payload);
+  let Mode = 'same-origin',
+      Url = url;
+
+  if(!url) {
+    return false;
+  }
+
+  if(process.env.NODE_ENV === 'development') {
+    Url = `${process.env.API_LOCATION_HREF}${url}`
+    Mode = 'cors';
+  }
+
+  return fetch(Url,
   {
-    method: "GET",
-    headers: {
-      'Accept'        : 'application/json',
-      'Content-Type'  : 'application/json'
-    },
-    body: {
-      "name": "jyoti nanda"
-    }
+    method: method,
+    headers: headers,
+    body: Body,
+    credentials: 'same-origin',
+    mode: Mode
   })
   .then(response => {
     return response.json();
@@ -29,7 +44,7 @@ function* signupSaveUser() {
   while (true) {
     const {payload} = yield take("SIGNUP_ATTEMPT");
     try {
-       const {response} = yield call(callAPI, payload);
+       const {response} = yield call(callAPI, '/auth-api/createAccount', 'POST', null, payload);
        yield put({type: "SUCCESSFUL_SIGNUP", response});
     } catch (e) {
        yield put({type: "SIGNUP_FAILED", message: e.message});
