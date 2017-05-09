@@ -5,12 +5,10 @@ import { Field, reduxForm } from 'redux-form';
  * @param {Object} props
  * @returns {JSX}
  */
- function Signup({className, signupFormSubmit, children, handleSubmit}) {
+ const Signup = ({className, signupFormSubmit, children, handleSubmit}) => {
   return (
      <div className={className}>
-      <header>
-        <h1>Create Account</h1>
-      </header>
+      <h2>Create Account</h2>
       <form onSubmit={handleSubmit(signupFormSubmit)}>
         <Field name="firstName" component={renderField} type="text" placeholder="First name"/>
         <Field name="lastName" component={renderField} type="text" placeholder="Last name"/>

@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { takeEvery, takeLatest, delay } from 'redux-saga';
 import { take, fork, put, call } from 'redux-saga/effects';
+import { browserHistory } from 'react-router';
 
 export function* updateBrowserInfo() {
   yield put({ type: 'APPLICATION_ONLOAD' });
@@ -46,6 +47,7 @@ function* signupSaveUser() {
     try {
        const {response} = yield call(callAPI, '/auth-api/createAccount', 'POST', null, payload);
        yield put({type: "SUCCESSFUL_SIGNUP", response});
+       browserHistory.push('/productList');
     } catch (e) {
        yield put({type: "SIGNUP_FAILED", message: e.message});
     }
