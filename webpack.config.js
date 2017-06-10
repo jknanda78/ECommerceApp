@@ -1,9 +1,9 @@
-var webpack = require("webpack"),
-    path = require("path"),
-    node_dir = __dirname + "/node_modules";
+const webpack = require("webpack");
+const path = require("path");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  devtool: "cheap-module-source-map",
+  devtool: "eval", // refer: https://webpack.js.org/configuration/devtool/
   entry: {
     app: ["babel-polyfill", "./example/index.js"]
   },
@@ -17,33 +17,46 @@ module.exports = {
     port: 9020
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.json$/,
+        enforce: "pre",
+        test: /\.scss$/,
         exclude: /node_modules/,
-        loader: "json-loader"
+        use: [
+          {
+            loader: "sasslint-loader"
+          }
+        ]
       },
-      // {
-      //   enforce: "pre",
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader",
-      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: ["react", "es2015", "stage-2", "stage-0"]
-        }
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              presets: ["env", "react", "es2015", "stage-2", "stage-0"],
+              plugins: [require('babel-plugin-transform-object-rest-spread')]
+            }
+          }
+        ]
       },
       {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        test: /\.(sass|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ]
       }
-    ],
+    ]
   },
   plugins: [
+    new ExtractTextPlugin({ // define where to save the file
+      filename: 'example/[name].bundle.css',
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       "process.env": {
         "NODE_ENV": JSON.stringify("development"),

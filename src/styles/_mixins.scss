@@ -1,0 +1,28 @@
+/*
+ * @mixins
+ * @author: jnanda
+ */
+
+@mixin clearfix {
+  &:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
+@mixin poscenter {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -100px;
+}
+
+@mixin show {
+  display: block;
+}
+
+@mixin hide {
+  display: none;
+}

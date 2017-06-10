@@ -18,5 +18,5 @@ sagaMiddleware.run(rootSaga);
 
 render(
   <Root store={STORE} />,
-  document.getElementById("container")
+  document.getElementById("flexContainer")
 );

@@ -1,0 +1,18 @@
+@import '../../../styles/normalize';
+@import '../../../styles/breakpoints';
+
+.flex-container {
+  display: flex;
+  height: 100%;
+}
+
+.layout {
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: $breakpoint-desktop-small) {
+  .layout {
+    border: 1px solid $layout-border-color;
+  }
+}

@@ -1,0 +1,35 @@
+/*
+ * @normalization
+ * @imports: variables, mixins
+ * @author: jnanda
+ */
+@import "variables";
+@import "mixins";
+
+* {box-sizing: border-box;}
+* {margin: 0;padding: 0}
+a:hover, a:link, a:visited, a:active {text-decoration: none; color: none;}
+
+body, html, div, ul, li, p, nav, section, header, footer, h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+body, html {
+  flex: 1 100%;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+div, header, footer, nav, section, ul, li, p, fieldset, h1, h2, h3, h4, h5, h6 {
+  @include clearfix;
+}
+
+fieldset {
+  border: none;
+  padding: 5px;
+  legend {
+    display: none;
+  }
+}

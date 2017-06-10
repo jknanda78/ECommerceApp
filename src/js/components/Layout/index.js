@@ -1,14 +1,20 @@
-import React, { PropTypes } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import Header from "../Header";
 import Footer from "../Footer";
+import {loadSass} from "../../utils";
+
+loadSass("components/Layout/style.scss");
 
 const Layout = props => {
   return (
-    <main role="main">
+    <div className="layout">
       <Header/>
-      {props.children}
+      <main className="main" role="main">
+        {props.children}
+      </main>
       <Footer/>
-    </main>
+    </div>
   )
 };
 
