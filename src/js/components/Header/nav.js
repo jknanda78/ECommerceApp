@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Represents Navigation component.
+ * @function
+ * @param {object} props - props passed from parent component
+ */
 const Navigation = props => {
   return (
     <ul className={`navigation ${(!props.open)? 'close' : ''}`}>

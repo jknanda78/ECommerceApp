@@ -6,6 +6,11 @@ import {loadSass} from "../../utils";
 
 loadSass("components/Layout/style.scss");
 
+/**
+ * Represents Layout component.
+ * @function
+ * @param {object} props - props passed from parent component
+ */
 const Layout = props => {
   return (
     <div className="layout">

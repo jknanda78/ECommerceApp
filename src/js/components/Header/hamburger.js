@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * Represents Hamburger or Menu.
+ * Represents Hamburger component.
  * @function
  * @param {object} props - props passed from parent component
  */

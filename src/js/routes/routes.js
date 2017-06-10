@@ -6,6 +6,10 @@ import Layout from "../components/Layout";
 import Signup from "../screens/Signup/containers";
 import ProductList from "../screens/Products/components/productList";
 
+/**
+ * Represents Routes component.
+ * @function
+ */
 const Routes = () => {
   return (
     <Router history={browserHistory}>
