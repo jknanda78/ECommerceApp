@@ -24,6 +24,7 @@
     }
   ],
   "dependencies": {
+    "@jsfoobar/custom-header": "^0.0.1",
     "babel-preset-stage-3": "^6.17.0",
     "bowser": "^1.6.0",
     "chromedriver": "^2.25.1",
